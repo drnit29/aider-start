@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "generatedAt": "2025-05-09T08:09:35.847Z",
+    "tasksAnalyzed": 3,
+    "thresholdScore": 5,
+    "projectName": "Taskmaster",
+    "usedResearch": false
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 21,
+      "taskTitle": "Integration Tests",
+      "complexityScore": 6,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Expand the integration tests based on the provided `test_integration.py`. Create subtasks for: 1. Implementing and verifying `test_create_profile_and_execute`. 2. Implementing and verifying `test_provider_integration`. 3. Adding tests for edge cases in component interactions, such as invalid profile data during command execution or errors during provider API key retrieval.",
+      "reasoning": "The task involves testing interactions between multiple components (ConfigManager, ProfileBuilder, CommandExecutor) and mocking external dependencies. While a good starting point is provided, ensuring comprehensive coverage of interaction paths and potential error states within these integrations adds moderate complexity. The existing test methods form natural subtasks, with an additional one for further edge cases."
+    },
+    {
+      "taskId": 22,
+      "taskTitle": "Error Handling and Edge Cases",
+      "complexityScore": 8,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Implement comprehensive error handling and edge case management. Create subtasks for: 1. Enhancing `ConfigManager` error handling (e.g., corrupted config file, file I/O errors). 2. Implementing TUI error display and safe execution wrappers. 3. Adding error handling in `CommandExecutor` (e.g., profile not found, command build errors). 4. Implementing input validation across the application (profile names, URLs, API keys, model names). 5. Implementing graceful degradation mechanisms (e.g., keyring unavailable, aider not installed).",
+      "reasoning": "This task is highly complex as it requires systemic changes across multiple application components (ConfigManager, TUI, CommandExecutor) and involves diverse types of error handling (I/O, validation, dependency issues, UI feedback). The detailed breakdown in the task description naturally lends itself to multiple subtasks."
+    },
+    {
+      "taskId": 23,
+      "taskTitle": "Packaging and Distribution",
+      "complexityScore": 7,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Prepare the application for packaging and distribution. Create subtasks for: 1. Creating and configuring `MANIFEST.in` to include necessary files. 2. Creating and configuring `setup.cfg` with metadata, dependencies, and entry points. 3. Developing a build and upload script (e.g., `build_and_upload.sh`) for PyPI. 4. Implementing a GitHub Actions workflow for automated testing across Python versions and publishing to PyPI on tagged releases.",
+      "reasoning": "Packaging and distribution involve multiple distinct artifacts and processes: metadata files (`MANIFEST.in`, `setup.cfg`), build/upload scripting, and CI/CD automation. Each requires careful configuration and testing, contributing to a moderately high complexity. The provided details clearly outline these distinct components."
+    }
+  ]
+}

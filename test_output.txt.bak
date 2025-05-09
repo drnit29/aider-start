@@ -1,0 +1,62 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.9, pytest-8.3.5, pluggy-1.5.0 -- C:\Users\Diogo\Apps\aider-start\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Diogo\Apps\aider-start
+plugins: anyio-4.9.0, cov-6.1.1, mock-3.14.0
+collecting ... collected 2 items
+
+tests/test_integration.py::TestIntegration::test_create_profile_and_execute PASSED [ 50%]
+tests/test_integration.py::TestIntegration::test_provider_integration FAILED [100%]
+
+================================== FAILURES ===================================
+__________________ TestIntegration.test_provider_integration __________________
+
+self = <tests.test_integration.TestIntegration testMethod=test_provider_integration>
+
+    def test_provider_integration(self):
+        """Test provider integration with profiles and command execution"""
+        # Add a provider
+        provider_data = {
+            'description': 'Test OpenAI Provider',
+            'api_url': 'https://api.openai.com/v1',
+            'api_key': 'test-api-key',
+            'models': ['gpt-4', 'gpt-3.5-turbo'],
+            'api_key_env_var': 'OPENAI_API_KEY',
+            'params': {
+                'api_type': {'value': 'openai', 'cli_arg': '--api-type'}
+            }
+        }
+>       self.config_manager.add_provider('openai_test_provider', provider_data)
+
+tests\test_integration.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <aider_start.config_manager.ConfigManager object at 0x000001F00E510560>
+name = 'openai_test_provider'
+provider_data = {'api_key': 'test-api-key', 'api_key_env_var': 'OPENAI_API_KEY', 'api_url': 'https://api.openai.com/v1', 'description': 'Test OpenAI Provider', ...}
+
+    def add_provider(self, name, provider_data):
+        """Adiciona ou atualiza um provedor."""
+        if not name or not isinstance(name, str):
+            error_msg = "Nome do provedor deve ser uma string não vazia"
+            logger.error(error_msg)
+            raise ValidationError(error_msg)
+        if not is_valid_name(name):
+            error_msg = f"Nome do provedor '{name}' é inválido. Use apenas letras, números, -, _ ou ."
+            logger.error(error_msg)
+            raise ValidationError(error_msg)
+    
+        # Validar dados do provedor
+        is_valid_struct, struct_error_msg = validate_dict_structure(
+            provider_data,
+            optional_keys=['api_url', 'models', 'api_key', 'description', 'api_key_env_var']
+        )
+        if not is_valid_struct:
+            logger.error(f"Dados de provedor inválidos: {struct_error_msg}")
+>           raise ValidationError(f"Dados de provedor inválidos: {struct_error_msg}")
+E           aider_start.exceptions.ValidationError: Dados de provedor inválidos: Chaves desconhecidas encontradas: params
+
+aider_start\config_manager.py:393: ValidationError
+=========================== short test summary info ===========================
+FAILED tests/test_integration.py::TestIntegration::test_provider_integration
+========================= 1 failed, 1 passed in 0.48s =========================
