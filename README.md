@@ -1,103 +1,99 @@
 # aider-start
 
-**Versão:** 0.1.0
-**Requisito Python:** >=3.8
-**Licença:** MIT (Placeholder - por favor, escolha uma licença apropriada)
+**Version:** 0.1.0
+**Python Requirement:** >=3.8
+**License:** MIT (Placeholder - please choose an appropriate license)
 
-## O que é o aider-start?
+## What is aider-start?
 
-`aider-start` é uma ferramenta de linha de comando (CLI) projetada para simplificar o gerenciamento de presets de configuração para o [aider](https://github.com/paul-gauthier/aider), a ferramenta de programação em par com IA baseada em chat no seu terminal.
+`aider-start` is a command-line interface (CLI) tool designed to simplify the management of configuration presets for [aider](https://github.com/paul-gauthier/aider), the chat-based AI pair programming tool in your terminal.
 
-Com `aider-start`, você pode facilmente criar, editar, selecionar e executar diferentes configurações para o `aider` através de uma Interface de Usuário de Texto (TUI) interativa, tornando mais eficiente o trabalho com `aider` em diversos contextos ou projetos.
+With `aider-start`, you can easily create, edit, select, and run different configurations for `aider` through an interactive Text User Interface (TUI), making it more efficient to work with `aider` in various contexts or projects.
 
-## Recursos Principais
+## Key Features
 
-*   **Gerenciamento de Presets:** Crie, liste, edite e exclua seus presets de configuração do `aider`.
-*   **Execução Fácil:** Selecione um preset na TUI para construir e executar o comando `aider` correspondente.
-*   **Assistente de Configuração:** Um assistente guiado para ajudá-lo a criar novos presets de forma intuitiva.
-*   **Interface de Usuário de Texto (TUI):** Uma interface amigável no terminal para todas as operações de gerenciamento de presets.
-*   **Configurações Avançadas:** Ajuste fino das configurações para cada preset.
-*   **Visualização de Comando:** Revise o comando `aider` gerado antes da execução.
+*   **Preset Management:** Create, list, edit, and delete your `aider` configuration presets.
+*   **Easy Execution:** Select a preset from the TUI to build and run the corresponding `aider` command.
+*   **Configuration Wizard:** A guided assistant to help you create new presets intuitively.
+*   **Text User Interface (TUI):** A user-friendly terminal interface for all preset management operations.
+*   **Advanced Settings:** Fine-tune settings for each preset.
+*   **Command Preview:** Review the generated `aider` command before execution.
 
-## Instalação
+## Installation
 
-Você pode instalar o `aider-start` usando pip:
+You can install `aider-start` using pip:
 
 ```bash
 pip install aider-start
 ```
 
-(Nota: Atualmente, o pacote pode não estar no PyPI. Consulte a seção "Desenvolvimento" para instalação local.)
+(Note: Currently, the package may not be on PyPI. Refer to the "Development" section for local installation.)
 
-## Uso
+## Usage
 
-Para iniciar a Interface de Usuário de Texto (TUI) e gerenciar seus presets, execute:
+To start the Text User Interface (TUI) and manage your presets, run:
 
 ```bash
 aider-start
 ```
 
-Ou explicitamente:
+Or explicitly:
 
 ```bash
 aider-start tui
 ```
 
-A TUI permitirá que você navegue, crie, edite, exclua e execute presets do `aider`.
+The TUI will allow you to navigate, create, edit, delete, and run `aider` presets.
 
-### Comando de Teste
+### Test Command
 
-Para verificar se a instalação está funcionando, você pode usar o comando `hello`:
+To check if the installation is working, you can use the `hello` command:
 
 ```bash
 aider-start hello
-# Saída esperada: Hello World from aider-start!
+# Expected output: Hello World from aider-start!
 
-aider-start hello --name SeuNome
-# Saída esperada: Hello SeuNome from aider-start!
+aider-start hello --name YourName
+# Expected output: Hello YourName from aider-start!
 ```
 
-## Como Funciona (Visão Geral)
+## How It Works (Overview)
 
-*   **CLI Framework:** Construído com [Typer](https://typer.tiangolo.com/) para uma interface de linha de comando robusta.
-*   **Text User Interface (TUI):** Utiliza [python-prompt-toolkit](https://python-prompt-toolkit.readthedocs.io/) para criar a experiência interativa no terminal.
-*   **Armazenamento de Dados:** Os presets e suas configurações são armazenados localmente em um banco de dados SQLite.
-*   **Execução de Comandos:** `aider-start` constrói e executa os comandos `aider` com base nos presets selecionados.
+*   **CLI Framework:** Built with [Typer](https://typer.tiangolo.com/) for a robust command-line interface.
+*   **Text User Interface (TUI):** Uses [python-prompt-toolkit](https://python-prompt-toolkit.readthedocs.io/) to create the interactive terminal experience.
+*   **Data Storage:** Presets and their configurations are stored locally in an SQLite database.
+*   **Command Execution:** `aider-start` builds and executes `aider` commands based on the selected presets.
 
-## Desenvolvimento
+## Development
 
-Se você deseja contribuir ou executar a versão de desenvolvimento:
+If you want to contribute or run the development version:
 
-1.  **Clone o repositório:**
+1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/aider-start # Atualize com o URL real
+    git clone https://github.com/yourusername/aider-start # Update with the actual URL
     cd aider-start
     ```
 
-2.  **Construa e instale localmente:**
-    O projeto inclui um script `build_and_test.py` para facilitar.
+2.  **Build and install locally:**
     ```bash
     python build_and_test.py
     ```
-    Este script irá limpar builds anteriores, construir o pacote, instalá-lo em modo de desenvolvimento (`pip install -e .`) e executar um teste básico.
+    This script will clean previous builds, build the package, install it in development mode (`pip install -e .`), and run a basic test.
 
-    Para instalar manualmente o wheel gerado (após executar `python -m build`):
+    To manually install the generated wheel (after running `python -m build`):
     ```bash
     pip install --force-reinstall dist/*.whl
     ```
 
-## Dependências Principais
+## Main Dependencies
 
 *   [typer[all]](https://typer.tiangolo.com/)
 *   [prompt-toolkit](https://python-prompt-toolkit.readthedocs.io/)
-*   [PyYAML](https://pyyaml.org/) (para manipulação de arquivos de configuração do `aider`)
+*   [PyYAML](https://pyyaml.org/) (for handling `aider` configuration files)
 
-## Detalhes do Projeto
+## Project Details
 
-*   **Homepage:** *(placeholder - atualize em `pyproject.toml` e aqui)*
-*   **Repositório:** *(placeholder - atualize em `pyproject.toml` e aqui)*
-*   **Autores:** *(placeholder - atualize em `pyproject.toml` e aqui)*
+*   **Repository:** https://github.com/drnit29/aider-start
+*   **Authors:** Diogo Soares Rodrigues
 
 ---
-
-*Este README foi atualizado com base na análise do código. Partes da informação de metadados são derivadas de `pyproject.toml`.*
