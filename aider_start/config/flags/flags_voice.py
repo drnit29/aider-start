@@ -1,0 +1,32 @@
+VOICE_FLAGS = [
+    {
+        "name": "voice-language",
+        "description": "Specify the language for voice using ISO 639-1 code (default: en)",
+        "category": "Voice settings",
+        "value_type": "string",
+        "requires_value": True,
+        "default_value": "en",
+        "is_deprecated": False,
+        "wizard_visible": True,
+    },
+    {
+        "name": "voice-format",
+        "description": "Specify the audio format for voice input (default: m4a)",
+        "category": "Voice settings",
+        "value_type": "string",
+        "requires_value": True,
+        "default_value": "m4a",
+        "is_deprecated": False,
+        "wizard_visible": True,
+    },
+    {
+        "name": "voice-input-device",
+        "description": "Specify the voice input device index or name",
+        "category": "Voice settings",
+        "value_type": "string",
+        "requires_value": True,
+        "default_value": None,
+        "is_deprecated": False,
+        "wizard_visible": True,
+    },
+]

@@ -1,0 +1,33 @@
+ANALYTICS_FLAGS = [
+    {
+        "name": "analytics",
+        "description": "Enable/disable anonymous analytics (default: True)",
+        "category": "Analytics",
+        "value_type": "boolean_explicit",
+        "choices": ["--analytics", "--no-analytics"],
+        "default_value": True,
+        "requires_value": False,
+        "is_deprecated": False,
+        "wizard_visible": True,
+    },
+    {
+        "name": "analytics-log",
+        "description": "Specify the analytics log file (default: .aider.analytics.log)",
+        "category": "Analytics",
+        "value_type": "path",
+        "requires_value": True,
+        "default_value": ".aider.analytics.log",
+        "is_deprecated": False,
+        "wizard_visible": True,
+    },
+    {
+        "name": "analytics-disable",
+        "description": "Permanently disable analytics",
+        "category": "Analytics",
+        "value_type": "boolean",
+        "requires_value": False,
+        "default_value": False,
+        "is_deprecated": False,
+        "wizard_visible": True,
+    },
+]
