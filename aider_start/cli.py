@@ -6,11 +6,11 @@ import subprocess
 def main_flow():
     while True:
         action = inquirer.select(
-            message="Selecione uma ação:",
+            message="Select an action:",
             choices=[
-                Choice("run", name="Executar Preset"),
-                Choice("config", name="Configurar Preset"),
-                Choice("exit", name="Sair"),
+                Choice("run", name="Run Preset"),
+                Choice("config", name="Configure Preset"),
+                Choice("exit", name="Exit"),
             ]
         ).execute()
         
@@ -24,14 +24,14 @@ def main_flow():
 def run_preset():
     presets = load_presets()
     if not presets:
-        print("Nenhum preset configurado!\n")
+        print("No presets configured!\n")
         return
         
     choices = [Choice(name=name, value=cmd) for name, cmd in presets.items()]
-    choices.append(Choice(value=None, name="Voltar"))
+    choices.append(Choice(value=None, name="Back"))
     
     selected_cmd = inquirer.select(
-        message="Selecione um preset:",
+        message="Select a preset:",
         choices=choices
     ).execute()
     
@@ -41,12 +41,12 @@ def run_preset():
 def configure_presets():
     while True:
         action = inquirer.select(
-            message="Gerenciar presets:",
+            message="Manage presets:",
             choices=[
-                Choice("add", name="Adicionar novo preset"),
-                Choice("edit", name="Editar preset existente"),
-                Choice("remove", name="Remover preset"),
-                Choice("back", name="Voltar"),
+                Choice("add", name="Add new preset"),
+                Choice("edit", name="Edit existing preset"),
+                Choice("remove", name="Remove preset"),
+                Choice("back", name="Back"),
             ]
         ).execute()
         
@@ -60,8 +60,8 @@ def configure_presets():
             break
 
 def add_preset():
-    name = inquirer.text(message="Nome do preset:").execute()
-    command = inquirer.text(message="Comando (ex: aider --model openai/gpt-4.1):").execute()
+    name = inquirer.text(message="Preset name:").execute()
+    command = inquirer.text(message="Command (e.g.: aider --model openai/gpt-4.1):").execute()
     presets = load_presets()
     presets[name] = command
     save_presets(presets)
@@ -69,17 +69,17 @@ def add_preset():
 def edit_preset():
     presets = load_presets()
     if not presets:
-        print("Nenhum preset disponível!\n")
+        print("No presets available!\n")
         return
         
     name = inquirer.select(
-        message="Selecione para editar:",
-        choices=list(presets.keys()) + ["Voltar"]
+        message="Select to edit:",
+        choices=list(presets.keys()) + ["Back"]
     ).execute()
     
-    if name != "Voltar":
+    if name != "Back":
         new_command = inquirer.text(
-            message=f"Novo comando para '{name}':", 
+            message=f"New command for '{name}':", 
             default=presets[name]
         ).execute()
         presets[name] = new_command
@@ -88,14 +88,14 @@ def edit_preset():
 def remove_preset():
     presets = load_presets()
     if not presets:
-        print("Nenhum preset disponível!\n")
+        print("No presets available!\n")
         return
         
     name = inquirer.select(
-        message="Selecione para remover:",
-        choices=list(presets.keys()) + ["Voltar"]
+        message="Select to remove:",
+        choices=list(presets.keys()) + ["Back"]
     ).execute()
     
-    if name != "Voltar":
+    if name != "Back":
         del presets[name]
         save_presets(presets)
