@@ -1,0 +1,2 @@
+[console_scripts]
+aider-start = aider_start.__main__:main

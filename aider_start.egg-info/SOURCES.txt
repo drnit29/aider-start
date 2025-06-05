@@ -1,0 +1,11 @@
+setup.py
+aider_start/__init__.py
+aider_start/__main__.py
+aider_start/cli.py
+aider_start/config_manager.py
+aider_start.egg-info/PKG-INFO
+aider_start.egg-info/SOURCES.txt
+aider_start.egg-info/dependency_links.txt
+aider_start.egg-info/entry_points.txt
+aider_start.egg-info/requires.txt
+aider_start.egg-info/top_level.txt
